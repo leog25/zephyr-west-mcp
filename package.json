@@ -10,12 +10,24 @@
     "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["mcp", "zephyr", "west", "ncs", "embedded", "modelcontextprotocol", "nordic", "rtos", "firmware", "kconfig", "claude"],
+  "keywords": [
+    "mcp",
+    "zephyr",
+    "west",
+    "ncs",
+    "embedded",
+    "modelcontextprotocol",
+    "nordic",
+    "rtos",
+    "firmware",
+    "kconfig",
+    "claude"
+  ],
   "author": "leogao25",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/leog25/zephyr-west-mcp.git"
+    "url": "git+https://github.com/leog25/zephyr-west-mcp.git"
   },
   "homepage": "https://github.com/leog25/zephyr-west-mcp#readme",
   "bugs": {
@@ -41,7 +53,7 @@
     },
     "tools": [
       "analyze_workspace",
-      "get_zephyr_version", 
+      "get_zephyr_version",
       "list_modules",
       "get_manifest_info",
       "list_boards",
