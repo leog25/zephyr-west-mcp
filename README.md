@@ -35,10 +35,20 @@ npm install mcp-zephyr
 
 ### Option 1: Using Claude MCP CLI (Recommended)
 
-The easiest way to add this MCP server to Claude Desktop:
+After installing the package globally, add it to Claude Desktop:
 
 ```bash
-claude mcp add mcp-zephyr
+# First install globally
+npm install -g mcp-zephyr
+
+# Then add to Claude MCP
+claude mcp add mcp-zephyr mcp-zephyr
+```
+
+Or if you prefer to use npx without global installation:
+
+```bash
+claude mcp add mcp-zephyr "npx mcp-zephyr"
 ```
 
 ### Option 2: Manual Configuration
