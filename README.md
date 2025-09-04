@@ -147,7 +147,7 @@ Gets build system information including CMake and Kconfig files.
 
 **Returns:** Lists of Kconfig files, CMake modules, and toolchain configurations.
 
-### `verify_kconfigs` ⭐ NEW
+### `verify_kconfigs` 
 Verifies if specified Kconfig options are available in the workspace before implementation. This prevents coding against non-existent configurations and provides alternatives and suggestions.
 
 **Parameters:**
