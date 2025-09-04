@@ -19,41 +19,63 @@ A Model Context Protocol (MCP) server for analyzing Zephyr RTOS and West workspa
 
 ## Installation
 
-1. Clone this repository:
+Install the package globally using npm:
+
 ```bash
-git clone <repository-url>
-cd mcp-zephyr
+npm install -g mcp-zephyr
 ```
 
-2. Install dependencies:
+Or install locally in your project:
+
 ```bash
-npm install
+npm install mcp-zephyr
 ```
 
 ## Setup for Claude Desktop
 
-To use this MCP server with Claude Desktop, you need to add it to your Claude configuration:
+### Option 1: Using Claude MCP CLI (Recommended)
+
+The easiest way to add this MCP server to Claude Desktop:
+
+```bash
+claude mcp add mcp-zephyr
+```
+
+### Option 2: Manual Configuration
+
+To manually configure this MCP server with Claude Desktop:
 
 1. Open your Claude Desktop configuration file:
    - **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
    - **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
-   - **Linux**: ``
+   - **Linux**: `~/.config/Claude/claude_desktop_config.json`
 
 2. Add the MCP Zephyr server to the `mcpServers` section:
 
+**If installed globally:**
 ```json
 {
   "mcpServers": {
     "mcp-zephyr": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-zephyr/src/index.js"],
+      "command": "mcp-zephyr",
       "env": {}
     }
   }
 }
 ```
 
-Replace `/absolute/path/to/mcp-zephyr` with the actual path to where you cloned this repository.
+**If installed locally:**
+```json
+{
+  "mcpServers": {
+    "mcp-zephyr": {
+      "command": "npx",
+      "args": ["mcp-zephyr"],
+      "env": {}
+    }
+  }
+}
+```
 
 3. Restart Claude Desktop for the changes to take effect.
 
@@ -160,13 +182,17 @@ The tools accept an optional `westPath` parameter for non-standard West configur
 
 ## Testing
 
-A test script is included to verify the analyzer works correctly:
+You can test the MCP server directly:
 
 ```bash
-node test.js
+# If installed globally
+mcp-zephyr
+
+# If installed locally  
+npx mcp-zephyr
 ```
 
-This will attempt to analyze a workspace at `/west` directory. Modify the path in `test.js` to test with your actual West workspace.
+The server will start and wait for MCP protocol messages via stdin/stdout.
 
 ## Project Structure
 
@@ -175,9 +201,9 @@ mcp-zephyr/
 ├── src/
 │   ├── index.js      # MCP server implementation
 │   └── analyzer.js   # West workspace analyzer
-├── package.json      # Node.js dependencies
-├── test.js          # Test script
-└── README.md        # This file
+├── package.json      # Node.js dependencies and metadata
+├── LICENSE          # MIT license
+└── README.md        # This documentation
 ```
 
 ## How It Works
@@ -204,8 +230,8 @@ mcp-zephyr/
 
 ### Server doesn't start
 - Ensure Node.js is installed: `node --version`
-- Check that all dependencies are installed: `npm install`
-- Verify the path in Claude configuration is absolute and correct
+- Verify the package is installed: `npm list -g mcp-zephyr` (for global) or `npm list mcp-zephyr` (for local)
+- Check your Claude Desktop configuration syntax (valid JSON)
 
 ### Workspace not recognized
 - Confirm the workspace has a `.west` directory
@@ -215,6 +241,7 @@ mcp-zephyr/
 ### Tools not appearing in Claude
 - Restart Claude Desktop after configuration changes
 - Check the configuration file syntax (valid JSON)
+- Try using `claude mcp list` to see if the server is registered
 - Look for errors in Claude's developer console
 
 ## License
