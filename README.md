@@ -9,7 +9,7 @@ A Model Context Protocol (MCP) server for analyzing Zephyr RTOS and West workspa
 - **Component Discovery**: Finds and catalogs modules, boards, and projects
 - **Build System Information**: Identifies Kconfig files, CMake modules, and toolchain configurations
 - **Manifest Parsing**: Reads West manifest files to understand project structure
-- **⭐ Kconfig Verification**: Verify if Kconfig options are available before implementation (NEW!)
+- **Kconfig Verification**: Verify if Kconfig options are available before implementation (NEW!)
 
 ## Prerequisites
 
